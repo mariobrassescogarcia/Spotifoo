@@ -1,9 +1,7 @@
 
 //CREATE THE PRIVATE BOX
 
-if (window.SongSearcher === undefined){
-  window.SongSearcher = {};
-};
+window.SpotifooApp = window.SpotifooApp || {};
 
 //CREATE THE CLASS SONG SEARCHER (INIT-SEARCH-SAVE+RENDER MODEL)
 
@@ -45,30 +43,49 @@ SongSearcher.prototype.render = function(foundSongs){
   $(".preview-player").trigger("play");
   var maxNumDisplayedSongs = 10;
   for (var i = 0; i < maxNumDisplayedSongs; i++) {
-    $(".track-list").append("<p class='listed-song' data-preview_url=" + renderableSongs[i].preview_url + ">" + i + ". " + renderableSongs[i].name + "  -  " + renderableSongs[i].artists[0].name  + "</p>");
-
+    $(".track-list").append("<p class='listed-song' data-order=" + i + ">" + i + ". " + renderableSongs[i].name + "  -  " + renderableSongs[i].artists[0].name  + "</p>");
+    songs.push(renderableSongs[i])
   }
 };
 
-// CREATE THE CLASS TRACKLIST PLAYER
+window.SpotifooApp.SongSearcher = SongSearcher;
 
-  if (window.TracklistPlayer === undefined){
-    window.TracklistPlayer = {};
-  };
+
+
+// CREATE THE CLASS TRACKLIST PLAYER
+window.SpotifooApp = window.SpotifooApp || {};
 
  var TracklistPlayer = function(){
   };
 
   TracklistPlayer.prototype.init = function(){
-    console.log("TracklistPlayer has been initialized")
+      console.log("TracklistPlayer has been initialized")
   };
 
- TracklistPlayer.prototype.play = function(oneSongUrl){
-  $(".title").empty();
-  $(".author").empty();
-  $(".preview-player").prop("src", oneSongUrl);
-  $(".preview-player").trigger("play");
-};
+  TracklistPlayer.prototype.play = function(oneSongOrder){
+    var selectedSong = songs[oneSongOrder];
+    $(".preview-player").prop("src", selectedSong.preview_url);
+    $(".preview-player").trigger("play");
+    this.changePlayer(oneSongOrder);
+  };
+
+  TracklistPlayer.prototype.changePlayer = function(songOrder){
+    $(".title").empty();
+    $(".author").empty();
+    var selectedSong = songs[songOrder];
+    $(".title").text(selectedSong.name);
+    $(".author").text(selectedSong.artists[0].name);
+    $(".cover-image").prop("src", selectedSong.album.images[1].url);
+  };
+
+
+  window.SpotifooApp.TracklistPlayer = TracklistPlayer;
+
+
+// CREATE THE VAR SONG
+
+var songs = [];
+
 
 //CREATE LISTENERS
 
@@ -82,13 +99,13 @@ $(document).on("ready", function(){
     mySongSearch.search(writtenSong);
   })
 
-});
-
-$(document).on("click", ".listed-song", function(event){
-  var clickedSong = new TracklistPlayer();
-  event.preventDefault();
-  clickedSong.init();
-  var selectedSong = $(event.currentTarget);
-  var selectedSongUrl = selectedSong.data("preview_url");
-  clickedSong.play(selectedSongUrl);
+  $(document).on("click", ".listed-song", function(event){
+    var clickedSong = new TracklistPlayer();
+    event.preventDefault();
+    clickedSong.init();
+    var selectedSong = $(event.currentTarget);
+    var selectedSongOrder = selectedSong.data("order");
+    clickedSong.play(selectedSongOrder);
   });
+
+});

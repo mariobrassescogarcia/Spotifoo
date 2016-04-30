@@ -179,6 +179,15 @@ form{
   color: #2ebd59;
 }
 
+form:hover{
+  cursor: pointer;
+}
+
+.search-input:hover{
+  border-color: white;
+  color: white;
+}
+
 .track-list{
 
   float: right;
@@ -188,4 +197,12 @@ form{
 .listed-song{
   width: 300px;
   height: 30px;
+}
+
+.listed-song:hover{
+  width: 300px;
+  height: 30px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
 }
