@@ -31,20 +31,57 @@ SongSearcher.prototype.render = function(foundSongs){
   this.songs.push(foundSongs);
   $(".tittle").empty();
   $(".author").empty();
+  $(".track-list").empty();
   var renderableSongs = this.songs[0].tracks.items
   var firstSong = renderableSongs[0];
   var firstSongName = firstSong.name;
   var firstSongArtist = firstSong.artists[0].name
   var firstSongImage = firstSong.album.images[1].url;
-  debugger;
-  console.log(firstSongName);
-  console.log(firstSongArtist);
+  var firstSongPreview = firstSong.preview_url;
   $(".title").text(firstSongName);
   $(".author").text(firstSongArtist);
-  $(".cover-image").prop("src", firstSongImage)
+  $(".cover-image").prop("src", firstSongImage);
+  $(".preview-player").prop("src", firstSongPreview);
+  $(".preview-player").trigger("play");
+  var maxNumDisplayedSongs = 10;
+  for (var i = 0; i < maxNumDisplayedSongs; i++) {
+    $(".track-list").append("<p class='listed-song' >" + i + ". " + renderableSongs[i].name + "  -  " + renderableSongs[i].artists[0].name  + "</p>");
+  }
 };
 
-//CREATE LISTENER
+//CREATE THE CLASS TRACKLIST PLAYER
+
+//  if (window.TracklistPlayer === undefined){
+//    window.TracklistPlayer = {};
+//  };
+//
+// var TracklistPlayer = function(){
+//  };
+//
+//  TracklistPlayer.prototype.init = function(){
+//    console.log("TracklistPlayer has been initialized")
+//  };
+//
+//  TracklistPlayer.prototype.select = function(foundSongs){
+//   this.songs = [];
+//   this.songs.push(foundSongs);
+//   $(".tittle").empty();
+//   $(".author").empty();
+//   var renderableSongs = this.songs[0].tracks.items
+//   var firstSong = renderableSongs[0];
+//   var firstSongName = firstSong.name;
+//   var firstSongArtist = firstSong.artists[0].name
+//   var firstSongImage = firstSong.album.images[1].url;
+//   var firstSongPreview = firstSong.preview_url;
+//   $(".title").text(firstSongName);
+//   $(".author").text(firstSongArtist);
+//   $(".cover-image").prop("src", firstSongImage);
+//   $(".preview-player").prop("src", firstSongPreview);
+// };
+
+
+
+//CREATE LISTENERS
 
 $(document).on("ready", function(){
 

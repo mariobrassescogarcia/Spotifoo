@@ -1,6 +1,12 @@
+body{
+  background-color: #232323;
+  color: #2ebd59;
+}
+
+
 .widget {
   width: 300px;
-  margin: 10px auto 0;
+  margin: 100px 0 0 350px;
   border-radius: 5px;
   overflow: hidden;
   display: block;
@@ -155,11 +161,25 @@ progress::-moz-progress-bar {
 }
 
 form{
+  margin: auto;
   margin-top: 50px;
 }
 
+::-webkit-input-placeholder {
+   color: #2ebd59;
+}
+
 .search-input{
-  width: 35%;
-  margin: auto;
+  width: 300px;
+  margin-left: 350px;
   text-align: center;
+  background-color: #232323;
+  border-color: #2ebd59;
+  border-width: medium;
+  color: #2ebd59;
+}
+
+.track-list{
+  float: right;
+  margin: -350px 300px 0 0;
 }
