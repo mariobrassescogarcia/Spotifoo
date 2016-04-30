@@ -180,6 +180,12 @@ form{
 }
 
 .track-list{
+
   float: right;
-  margin: -350px 300px 0 0;
+  margin: -380px 250px 0 0;
+}
+
+.listed-song{
+  width: 300px;
+  height: 30px;
 }
