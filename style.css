@@ -3,10 +3,22 @@ body{
   color: #2ebd59;
 }
 
+header{
+  color: white;
+  font-size: 100px;
+  width: 100%;
+  text-align: center;
+}
+
+.spotify-logo{
+  width: 200px;
+  height: 200px;
+}
+
 
 .widget {
   width: 300px;
-  margin: 100px 0 0 350px;
+  margin: 25px 0 0 200px;
   border-radius: 5px;
   overflow: hidden;
   display: block;
@@ -171,7 +183,7 @@ form{
 
 .search-input{
   width: 300px;
-  margin-left: 350px;
+  margin-left: 200px;
   text-align: center;
   background-color: #232323;
   border-color: #2ebd59;
@@ -190,11 +202,11 @@ form:hover{
 
 .track-list{
   float: right;
-  margin: -380px 250px 0 0;
+  margin: -380px 200px 0 0;
 }
 
 .listed-song{
-  width: 300px;
+  width: 600px;
   height: 30px;
   border-bottom: 25px;
 }

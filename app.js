@@ -123,11 +123,8 @@ $(document).on("ready", function(){
     }
   });
 
-  function printTime () {
-    var current = $('.preview-player').prop('currentTime');
-    console.debug('Current time: ' + current);
-  }
-  $('.preview-player').on('timeupdate', printTime);
-  printTime();
+  $(".preview-player").on("timeupdate", function(){
+    $("progress").prop("value", this.currentTime);
+  });
 
 });
