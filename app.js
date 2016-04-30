@@ -29,22 +29,20 @@ SongSearcher.prototype.search = function(songName){
 SongSearcher.prototype.render = function(foundSongs){
   this.songs = [];
   this.songs.push(foundSongs);
+  $(".tittle").empty();
+  $(".author").empty();
   var renderableSongs = this.songs[0].tracks.items
   var firstSong = renderableSongs[0];
   var firstSongName = firstSong.name;
-  var firstSongAlbum = firstSong.album.name;
-  if (firstSong.artists.name === undefined){
-    var firstSongArtist = "Unknown"
-  }
-  else {
-    var firstSongArtist = firstSong.artists.name
-  }
+  var firstSongArtist = firstSong.artists[0].name
   var firstSongImage = firstSong.album.images[1].url;
+  debugger;
   console.log(firstSongName);
-  console.log(firstSongAlbum);
   console.log(firstSongArtist);
-  console.log(firstSongImage);
-}
+  $(".title").text(firstSongName);
+  $(".author").text(firstSongArtist);
+  $(".cover-image").prop("src", firstSongImage)
+};
 
 //CREATE LISTENER
 
