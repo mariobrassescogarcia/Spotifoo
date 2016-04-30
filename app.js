@@ -41,6 +41,7 @@ SongSearcher.prototype.render = function(foundSongs){
   $(".cover-image").prop("src", firstSongImage);
   $(".preview-player").prop("src", firstSongPreview);
   $(".preview-player").trigger("play");
+  $(".btn-play").addClass("playing");
   var maxNumDisplayedSongs = 10;
   for (var i = 0; i < maxNumDisplayedSongs; i++) {
     $(".track-list").append("<p class='listed-song' data-order=" + i + ">" + i + ". " + renderableSongs[i].name + "  -  " + renderableSongs[i].artists[0].name  + "</p>");
@@ -63,6 +64,7 @@ window.SpotifooApp = window.SpotifooApp || {};
   };
 
   TracklistPlayer.prototype.play = function(oneSongOrder){
+    $(".btn-play").addClass("playing");
     var selectedSong = songs[oneSongOrder];
     $(".preview-player").prop("src", selectedSong.preview_url);
     $(".preview-player").trigger("play");
@@ -93,6 +95,7 @@ $(document).on("ready", function(){
 
   var mySongSearch = new SongSearcher()
   mySongSearch.init();
+
   $(".search-form").on("submit", function(event){
     event.preventDefault();
     var writtenSong = $(".search-input").val();
@@ -107,5 +110,18 @@ $(document).on("ready", function(){
     var selectedSongOrder = selectedSong.data("order");
     clickedSong.play(selectedSongOrder);
   });
+
+  $(".btn-play").on("click", function(){
+    if ($(".btn-play").hasClass("playing")){
+      $(".btn-play").removeClass("playing");
+      $(".preview-player").trigger("pause");
+    }
+    else {
+      $(".btn-play").addClass("playing");
+      $(".preview-player").trigger("play");
+    }
+
+  })
+
 
 });
