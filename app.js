@@ -25,6 +25,7 @@ SongSearcher.prototype.search = function(songName){
 };
 
 SongSearcher.prototype.render = function(foundSongs){
+  songs = [];
   this.songs = [];
   this.songs.push(foundSongs);
   $(".tittle").empty();
@@ -120,8 +121,13 @@ $(document).on("ready", function(){
       $(".btn-play").addClass("playing");
       $(".preview-player").trigger("play");
     }
+  });
 
-  })
-
+  function printTime () {
+    var current = $('.preview-player').prop('currentTime');
+    console.debug('Current time: ' + current);
+  }
+  $('.preview-player').on('timeupdate', printTime);
+  printTime();
 
 });

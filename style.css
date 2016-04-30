@@ -189,7 +189,6 @@ form:hover{
 }
 
 .track-list{
-
   float: right;
   margin: -380px 250px 0 0;
 }
@@ -197,11 +196,10 @@ form:hover{
 .listed-song{
   width: 300px;
   height: 30px;
+  border-bottom: 25px;
 }
 
 .listed-song:hover{
-  width: 300px;
-  height: 30px;
   font-weight: bold;
   color: white;
   cursor: pointer;
