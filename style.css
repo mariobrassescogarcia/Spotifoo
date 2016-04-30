@@ -1,6 +1,8 @@
 body{
-  background-color: #232323;
-  color: #2ebd59;
+  /*background-color: #232323;*/
+  background: url("http://b.fastcompany.net/multisite_files/fastcompany/imagecache/1280/poster/2014/04/3028603-poster-p-1-spotify-redesign-black.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: white;
 }
 
 header{
@@ -18,7 +20,7 @@ header{
 
 .widget {
   width: 300px;
-  margin: 25px 0 0 200px;
+  margin: 40px 0 0 200px;
   border-radius: 5px;
   overflow: hidden;
   display: block;
@@ -186,9 +188,9 @@ form{
   margin-left: 200px;
   text-align: center;
   background-color: #232323;
-  border-color: #2ebd59;
+  border-color: #87af03;
   border-width: medium;
-  color: #2ebd59;
+  color: #87af03;
 }
 
 form:hover{
@@ -202,17 +204,22 @@ form:hover{
 
 .track-list{
   float: right;
-  margin: -380px 200px 0 0;
+  margin: -420px 0 0 0;
+  background-color: rgba(35, 35, 35, 0.8);
+  width: 100%;
+  border: 25px;
 }
 
 .listed-song{
-  width: 600px;
+  margin-top: 15px;
+  width: 800px;
   height: 30px;
-  border-bottom: 25px;
+  margin-left: 600px;
+  border-bottom: 15px;
 }
 
 .listed-song:hover{
   font-weight: bold;
-  color: white;
+  color: #87af03;
   cursor: pointer;
 }

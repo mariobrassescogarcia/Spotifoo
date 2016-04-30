@@ -45,7 +45,7 @@ SongSearcher.prototype.render = function(foundSongs){
   $(".btn-play").addClass("playing");
   var maxNumDisplayedSongs = 10;
   for (var i = 0; i < maxNumDisplayedSongs; i++) {
-    $(".track-list").append("<p class='listed-song' data-order=" + i + ">" + i + ". " + renderableSongs[i].name + "  -  " + renderableSongs[i].artists[0].name  + "</p>");
+    $(".track-list").append("<p class='listed-song' data-order=" + i + ">" + i + ".   " + renderableSongs[i].name + "    -    " + renderableSongs[i].artists[0].name  + "</p>");
     songs.push(renderableSongs[i])
   }
 };
